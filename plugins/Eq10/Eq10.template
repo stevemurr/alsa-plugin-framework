@@ -1,0 +1,11 @@
+pcm.eq {
+	type ladspa
+	slave.pcm $NEXT
+	path "/usr/lib/ladspa"
+	plugins [{
+		label Eq10
+		input {
+			controls [ 31Hz 63Hz 125Hz 250Hz 500Hz 1kHz 2kHz 4kHz 8kHz 16kHz ] 
+		}
+	}]
+}

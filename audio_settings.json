@@ -1,0 +1,54 @@
+{
+  "order": ["hpf", "Eq10"],
+  "hpf": {
+    "info": "High Pass Filter",
+    "alsa_alias": "hpf",
+    "settings": {
+      "frequency_cutoff": "80"
+    },
+    "template_path": "/home/pi/audioConfigs/plugins/hpf/hpf.template"
+  },
+  "delay": {
+    "info": "Basic Delay",
+    "alsa_alias": "delay",
+    "settings": {
+      "dry": "0.8",
+      "wet": "0.3"
+    },
+    "template_path": "/home/pi/audioConfigs/plugins/delay/delay.template"
+  },
+  "Eq10": {
+    "info": "10-band equaliser.  -48 to 24db per band.",
+    "alsa_alias": "eq",
+    "settings": {
+      "31Hz": "0",
+      "63Hz": "0",
+      "125Hz": "0",
+      "250Hz": "0",
+      "500Hz": "0",
+      "1kHz": "0",
+      "2kHz": "0",
+      "4kHz": "4",
+      "8kHz": "8",
+      "16kHz": "12"
+    },
+    "template_path": "/home/pi/audioConfigs/plugins/Eq10/Eq10.template"
+  },
+  "dysonCompress": {
+    "info": "Compressor",
+    "alsa_alias": "compress",
+    "notes": [
+       "peak_limit >> -30 to 0, default 0",
+       "release_time >> 0 to 1, default 0.25",
+       "fast_compression_ratio >> 0 to 1, default 0.5",
+       "compression_ratio >> 0 to 1, default 0.5"
+    ], 
+    "settings": {
+      "peak_limit": "-20",
+      "release_time": "0.25",
+      "fast_compression_ratio": "0.5",
+      "comp_ratio": "0.5"
+    },
+    "template_path": "/home/pi/audioConfigs/plugins/dysonCompress/dysonCompress.template"
+  }
+}

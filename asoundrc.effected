@@ -1,0 +1,58 @@
+pcm.!default {
+	type asym
+	playback.pcm plug:hpf
+	capture.pcm "plughw:1,0"
+}
+
+pcm.hpf {
+	type ladspa
+	slave.pcm "eq"
+	path "/usr/lib/ladspa";
+	plugins [{
+		label hpf
+		input {
+			controls [ 350 ]
+		}
+	}]
+}
+
+pcm.eq {
+	type ladspa
+	slave.pcm "compress"
+	path "/usr/lib/ladspa"
+	plugins [{
+		label Eq10
+		input {
+			controls [ 0 0 -2 0 0 0 0 4 0 24 ] 
+		}
+	}]
+}
+
+pcm.compress {
+	type ladspa
+	slave.pcm plug:dmix
+	path "/usr/lib/ladspa";
+	plugins [{
+		label dysonCompress
+		input {
+			controls [ 0 0.25 0.5 0.2 ]
+		}
+	}]
+}
+
+pcm.delay {
+	type ladspa
+	slave.pcm plug:dmix
+	path "/usr/lib/ladspa";
+	plugins [{
+		label delay_5s
+		input {
+			controls [ 0.8 0.3 ]
+		}
+	}]
+}
+
+ctl.!default {
+	type hw
+	card 0
+}

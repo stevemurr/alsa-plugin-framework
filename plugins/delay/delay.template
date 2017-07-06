@@ -1,0 +1,11 @@
+pcm.delay {
+	type ladspa
+	slave.pcm $NEXT
+	path "/usr/lib/ladspa";
+	plugins [{
+		label delay_5s
+		input {
+			controls [ dry wet ]
+		}
+	}]
+}
